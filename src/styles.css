@@ -1,15 +1,25 @@
+:root{
+  --backColor:black;
+  --color:white;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
 }
 
+h3{
+  color:var(--color);
+}
 .Calculator{
-  background-color: red;
-  width:400px;
+  background-color: var(--backColor);
+  /* width:400px; */
   display:block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  padding: 5px;
+
 }
 
 #root{
@@ -26,4 +36,20 @@
   position: absolute;
   width:400px;
   transform: translateY(10px);
+}
+.buttonPad{
+  display: block;
+}
+.buttonRow{
+  display: block;
+}
+.buttonCell{
+  display: inline-block;
+}
+.buttonCell button{
+  width:50px;
+  height: 50px;
+}
+.longButton{
+  width: 100px !important;
 }
