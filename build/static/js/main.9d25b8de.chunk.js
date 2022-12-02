@@ -1,0 +1,2 @@
+(this["webpackJsonpjavascript-calculator"]=this["webpackJsonpjavascript-calculator"]||[]).push([[0],{12:function(e,t,c){},14:function(e,t,c){"use strict";c.r(t);var r=c(1),a=c(3),n=(c(12),c(0));function s(){return Object(n.jsxs)("div",{className:"App",children:[Object(n.jsx)("h1",{children:"Hello CodeSandbox"}),Object(n.jsx)("h2",{children:"Start editing to see some magic happen!"})]})}var o=document.getElementById("root");Object(a.createRoot)(o).render(Object(n.jsx)(r.StrictMode,{children:Object(n.jsx)(s,{})}))}},[[14,1,2]]]);
+//# sourceMappingURL=main.9d25b8de.chunk.js.map
