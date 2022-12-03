@@ -3,24 +3,18 @@
   --color:white;
 }
 
-.App {
-  font-family: sans-serif;
-  text-align: center;
-}
-
 h3{
-  color:var(--color);
   text-align: right !important;
 }
 .Calculator{
   background-color: var(--backColor);
-  /* width:400px; */
+  font-family: 'Orbitron', sans-serif !important;
   display:block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  padding: 5px;
-
+  padding: 15px;
+  border-radius: 50px;
 }
 
 #root{
@@ -48,13 +42,40 @@ h3{
 .buttonCell{
   display: inline-block;
 }
+.AC{
+  background-color:rgb(248, 37, 37);
+}
+.AC:active{
+  background-color:rgb(253, 69, 69);
+}
+.Operator{
+  background-color: rgb(95, 93, 93);
+}
+.Operator:active{
+  background-color: rgb(119, 117, 117);
+}
+.Num{
+  background-color: rgb(61, 58, 58);
+}
+.Num:active{
+  background-color: rgb(80, 79, 79);
+}
 .buttonCell button{
-  width:50px;
-  height: 50px;
-  border-radius: 25px;
+  width:80px;
+  height: 80px;
+  border-radius: 40px;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: large;
+  color:white;
+}
+.firstLine{
+  color:lightblue !important;
+}
+.secondLine{
+  color:var(--color)
 }
 .longButton{
-  width: 100px !important;
+  width: 160px !important;
 }
 
 @media only screen and (max-device-width: 600px) {
