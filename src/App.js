@@ -2,16 +2,29 @@ import React, { Component }  from 'react';
 import { isThisTypeNode } from "typescript";
 import "./styles.css";
 
-var Line2="";
-var isRead = true;
+var Line1="", Line2="";
+var isRead = true, isEqual = false;
 
+//function to save data to history when '=' is pressed
+function SaveToHistory(par_argument, par_output){
+  var history = JSON.parse(localStorage.getItem("history"));
+  if(history==null){
+    localStorage.setItem("history",JSON.stringify({0:{argument:String(par_argument),output:String(par_output)}}))
+  }
+  else{
+    var par_id = Object.keys(history).length
+    Object.assign(history,{[par_id]:{argument:String(par_argument),output:String(par_output)}});
+    localStorage.setItem("history",JSON.stringify(history));
+  }
+  console.log("Saved to history");
+}
+console.log("History: " + history);
 export default class App extends React.Component {
   constructor(props){
     super(props);
     this.handleClick=this.handleClick.bind(this);
     this.state={
-      Line2:"",
-      keyList:["0","1","2","3","4","5","6","7","8","9","ESCAPE","/","X","-","+","=","BACKSPACE","."]
+      keyList:["0","1","2","3","4","5","6","7","8","9","ESCAPE","/","*","-","+","=","BACKSPACE","."]
     }
   }
   componentDidMount() {
@@ -34,8 +47,38 @@ export default class App extends React.Component {
     
     var value = arguments.length==2? arguments[1]:event.target.value;
     if(isRead) {
-      Line2 += value;
+      if(value=="BACKSPACE") {
+        Line2 = Line2.substring(0,Line2.length-1);
+        Line1 = Line1.substring(0,Line1.length-1);
+      }
+      else if(value=="ESCAPE") {
+        Line2 = "";
+        Line1 = "";
+      }
+      else if(["+","-","/","*"].includes(value)){
+        if(!isEqual){
+          Line2 = "";
+          Line1 += value;
+        }
+        else{
+          Line1=Line2+value;
+          Line2="";
+          isEqual=false;
+        }
+      }
+      else if(value=="="){
+        Line2 = String(eval(Line1));
+        Line1 += value;
+        isEqual = true;
+
+        SaveToHistory(Line1, Line2)
+      }
+      else {
+        Line2 += value;
+        Line1 += value;
+      }
       document.getElementById("secondLine").innerHTML=Line2;
+      document.getElementById("firstLine").innerHTML=Line1;
     }
     isRead = !isRead;
   }
@@ -50,11 +93,12 @@ export default class App extends React.Component {
     return (
       <div className="Calculator">
         <div className="display">
+          <i class="fa fa-solid fa-clock-rotate-left"></i>
           <div className="firstLine">
-            <h3>Welcome</h3>
+            <h3 id="firstLine">Welcome</h3>
           </div>
           <div className="secondLine">
-            <h3 id="secondLine">9876543210</h3>
+            <h3 id="secondLine"></h3>
           </div>
         </div>
         <div className="buttonPad">
