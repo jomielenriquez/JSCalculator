@@ -93,7 +93,7 @@ export default class App extends React.Component {
     return (
       <div className="Calculator">
         <div className="display">
-          <i class="fa fa-solid fa-clock-rotate-left"></i>
+          {/* <i class="fa fa-solid fa-clock-rotate-left"></i> */}
           <div className="firstLine">
             <h3 id="firstLine">Welcome</h3>
           </div>
