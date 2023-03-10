@@ -18,7 +18,7 @@ function SaveToHistory(par_argument, par_output){
   }
   console.log("Saved to history");
 }
-console.log("History: " + history);
+//console.log("History: " + history);
 export default class App extends React.Component {
   constructor(props){
     super(props);
